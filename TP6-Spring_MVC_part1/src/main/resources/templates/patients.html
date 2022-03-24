@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.tymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Patients</title>
+    <link rel="stylesheet" href="/webjars/bootstrap/5.1.3/css/bootstrap.min.css">
+</head>
+<body>
+    <div class="container mt-3">
+        <div class="card">
+            <div class="card-header">
+                <h3>Liste des patients</h3>
+            </div>
+            <div class="card-body">
+                <table class="table">
+                    <form method="get" th:action="@{index}">
+                         <label class="me-4">Mot Clé</label>
+                        <input type="text" name="key" th:value="${key}" class="input-group-text">
+                        <button type="submit" class="btn btn-primary">chercher</button>
+                    </form>
+                    <thead>
+                    <tr>
+                        <th>ID</th><th>Name</th><th>Email</th><th>Date</th><th>Malade</th><th>Score</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr th:each="p:${listpatients}">
+                        <td th:text="${p.id}"></td>
+                        <td th:text="${p.name}"></td>
+                        <td th:text="${p.email}"></td>
+                        <td th:text="${p.date}"></td>
+                        <td th:text="${p.malade}"></td>
+                        <td th:text="${p.score}"></td>
+                        <td>
+                            <a onclick="return confirm('est vous sure !')" class="btn btn-danger" th:href="@{delete(id=${p.id},page=${currentPage},key=${key})}">Delete</a>
+                        </td>
+                    </tr>
+                    </tbody>
+
+                </table>
+                <ul class="nav nav-pills" >
+                    <li th:each="page,status:${pages}">
+                        <a th:class="${status.index==currentPage?'btn btn-primary ms-2':'btn btn-outline-primary ms-2'}"
+                           th:text="${status.index}"
+                        th:href="@{index(page=${status.index}, key=${key})}"></a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>
