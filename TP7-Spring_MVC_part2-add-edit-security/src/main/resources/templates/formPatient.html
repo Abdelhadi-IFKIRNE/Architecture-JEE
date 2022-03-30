@@ -7,13 +7,47 @@
 </head>
 <body>
 <div class="container" layout:fragment="content1">
-   <form method="post" th:action="@{}">
-       <div class="mb-3">
-           <label>Nom</label>
-           <input type="text" name="name" >
-       </div>
+    <div class="card container col-md-6 mt-4">
+        <div class="card-header bg-opacity-25 bg-primary text-center"> Ajouter un patient</div>
+        <div class="card-body">
+                <form method="post" th:action="@{save}" class="form-control" >
+                    <div>
+                        <label>Nom</label>
+                        <input class="form-control" type="text" name="name" th:value="${patient.name}">
+                        <span th:errors="${patient.name}" class="text-danger"></span>
+                    </div>
 
-   </form>
+                    <div>
+                        <label>email</label>
+                        <input class="form-control" type="text" name="email" th:value="${patient.email}">
+                        <span th:errors="${patient.email}" class="text-danger"></span>
+                    </div>
+
+                    <div>
+                        <label>Date</label>
+                        <input class="form-control" type="date" name="date" th:value="${patient.date}">
+                        <span th:errors="${patient.date}" class="text-danger"></span>
+                    </div>
+
+                    <div>
+                        <label>malade</label>
+                        <input type="checkbox" name="malade" th:checked="${patient.malade}">
+                        <span th:errors="${patient.malade}" class="text-danger"></span>
+                    </div>
+                    <div>
+                        <label>score</label>
+                        <input class="form-control" type="text" name="score" th:value="${patient.score}">
+                        <span th:errors="${patient.score}" class="text-danger"></span>
+                    </div>
+                 <div class="text-center mt-4">
+                     <button type="submit" class="btn btn-primary align-content-center">Ajouter</button>
+                 </div>
+
+                </form>
+
+        </div>
+    </div>
+
 </div>
 </body>
 </html>

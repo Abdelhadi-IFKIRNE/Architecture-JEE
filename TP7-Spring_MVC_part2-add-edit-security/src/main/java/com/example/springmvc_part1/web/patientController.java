@@ -7,10 +7,13 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import javax.validation.Valid;
 import java.util.List;
 
 
@@ -44,8 +47,15 @@ public class patientController {
         return  "redirect:/index";
     }
 
-    public String AddPatient(Model model){
+    @GetMapping("/form")
+    public String formPatient(Model model){
         model.addAttribute("patient",new Patient());
         return "formPatient";
+    }
+       @PostMapping(path = "/save")
+    public String savePatient(Model model, @Valid Patient patient, BindingResult bindingResult){
+        if(bindingResult.hasErrors()) return "formPatient";
+        pateintRepository.save(patient);
+        return "redirect:form";
     }
 }
