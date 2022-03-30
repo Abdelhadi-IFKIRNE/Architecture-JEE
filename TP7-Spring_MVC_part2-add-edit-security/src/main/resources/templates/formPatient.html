@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.tymeleaf.org" xmlns:layout="http://wwww.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="template1">
+<head>
+    <meta charset="UTF-8">
+    <title>Patients</title>
+</head>
+<body>
+<div class="container" layout:fragment="content1">
+   <form method="post" th:action="@{}">
+       <div class="mb-3">
+           <label>Nom</label>
+           <input type="text" name="name" >
+       </div>
+
+   </form>
+</div>
+</body>
+</html>
