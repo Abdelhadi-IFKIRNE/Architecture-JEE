@@ -16,7 +16,7 @@ public class SpringMvcPart1Application {
         SpringApplication.run(SpringMvcPart1Application.class, args);
     }
 
-    @Bean
+//    @Bean
     CommandLineRunner start(PateintRepository pateintRepository){
        return args->{
            pateintRepository.save(new Patient(null,"ahmed","ahmed@gmail.com",new Date(),false,100));

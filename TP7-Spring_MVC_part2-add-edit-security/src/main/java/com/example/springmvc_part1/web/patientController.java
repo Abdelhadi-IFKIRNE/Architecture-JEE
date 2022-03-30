@@ -43,4 +43,9 @@ public class patientController {
     public String def(){
         return  "redirect:/index";
     }
+
+    public String AddPatient(Model model){
+        model.addAttribute("patient",new Patient());
+        return "formPatient";
+    }
 }
