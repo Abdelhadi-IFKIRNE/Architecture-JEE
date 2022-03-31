@@ -58,4 +58,20 @@ public class patientController {
         pateintRepository.save(patient);
         return "redirect:form";
     }
+        @GetMapping(path = "/edit")
+    public String editPatient(Model model,int id, int page, String key){
+        Patient p=pateintRepository.findById((long) id).orElse(null);
+        if(p==null) throw new RuntimeException("patient introvable");
+        model.addAttribute("patient",p);
+        model.addAttribute("page",page);
+        model.addAttribute("key",key);
+        return "editPatient";
+    }
+       @PostMapping(path = "/saveEdit")
+    public String saveEdit(Model model,@Valid Patient patient, BindingResult bindingResult, @RequestParam(defaultValue = "0")
+               int page, @RequestParam(defaultValue = "") String key){
+        if(bindingResult.hasErrors())return "editPatient";
+        pateintRepository.save(patient);
+        return "redirect:/index?page="+page+"&key="+key;
+    }
 }

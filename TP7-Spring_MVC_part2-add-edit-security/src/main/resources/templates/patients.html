@@ -14,10 +14,12 @@
             </div>
             <div class="card-body">
                 <table class="table">
-                    <form method="get" th:action="@{index}">
-                        <label class="me-4">Mot Clé</label>
-                        <input type="text" name="key" th:value="${key}" class="input-group-text">
-                        <button type="submit" class="btn btn-primary">chercher</button>
+                    <form method="get" th:action="@{index}" class="nav nav-pills">
+
+                         <label>Mot Clé</label>
+                         <input type="text" name="key" th:value="${key}" class="input-group-text">
+                         <button type="submit" class="btn btn-primary">chercher</button>
+
                     </form>
                     <thead>
                     <tr>
@@ -34,6 +36,9 @@
                         <td th:text="${p.score}"></td>
                         <td>
                             <a onclick="return confirm('est vous sure !')" class="btn btn-danger" th:href="@{delete(id=${p.id},page=${currentPage},key=${key})}">Delete</a>
+                        </td>
+                        <td>
+                            <a class="btn btn-success" th:href="@{edit(id=${p.id},page=${currentPage},key=${key})}">Modifier</a>
                         </td>
                     </tr>
                     </tbody>
