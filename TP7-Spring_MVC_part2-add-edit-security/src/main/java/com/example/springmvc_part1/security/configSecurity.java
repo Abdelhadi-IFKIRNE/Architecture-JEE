@@ -25,6 +25,9 @@ public class configSecurity extends WebSecurityConfigurerAdapter {
         http.formLogin();
 
         http.authorizeRequests().antMatchers("/").permitAll();
+        http.authorizeRequests().antMatchers("/admin/**").hasRole("ADMIN");
+        http.authorizeRequests().antMatchers("/user/**").hasRole("USER");
+        http.exceptionHandling().accessDeniedPage("/403");
         http.authorizeRequests().anyRequest().authenticated();
     }
       @Bean

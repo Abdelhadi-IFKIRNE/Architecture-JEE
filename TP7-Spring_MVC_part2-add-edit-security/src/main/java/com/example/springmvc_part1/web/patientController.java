@@ -23,7 +23,7 @@ public class patientController {
 
     private PateintRepository pateintRepository;
 
-    @GetMapping(path = "/index")
+    @GetMapping(path = "/user/index")
     public String patients(Model model,
                            @RequestParam(name ="page",defaultValue ="0") int page,
                            @RequestParam(name = "size",defaultValue = "5") int size,
@@ -35,30 +35,30 @@ public class patientController {
         model.addAttribute("key",ky);
        return "patients";
     }
-       @GetMapping(path="/delete")
+       @GetMapping(path="/admin/delete")
     public String delete(
              Long id,String key, int page
     ){
         pateintRepository.deleteById(id);
-        return "redirect:/index?page="+page+"&key="+key;
+        return "redirect:/user/index?page="+page+"&key="+key;
     }
       @GetMapping(path= "/")
     public String def(){
         return  "home";
     }
 
-    @GetMapping("/form")
+    @GetMapping("/admin/form")
     public String formPatient(Model model){
         model.addAttribute("patient",new Patient());
         return "formPatient";
     }
-       @PostMapping(path = "/save")
+       @PostMapping(path = "/admin/save")
     public String savePatient(Model model, @Valid Patient patient, BindingResult bindingResult){
         if(bindingResult.hasErrors()) return "formPatient";
         pateintRepository.save(patient);
-        return "redirect:form";
+        return "redirect:/admin/form";
     }
-        @GetMapping(path = "/edit")
+        @GetMapping(path = "/admin/edit")
     public String editPatient(Model model,int id, int page, String key){
         Patient p=pateintRepository.findById((long) id).orElse(null);
         if(p==null) throw new RuntimeException("patient introvable");
@@ -67,11 +67,11 @@ public class patientController {
         model.addAttribute("key",key);
         return "editPatient";
     }
-       @PostMapping(path = "/saveEdit")
+       @PostMapping(path = "/admin/saveEdit")
     public String saveEdit(Model model,@Valid Patient patient, BindingResult bindingResult, @RequestParam(defaultValue = "0")
                int page, @RequestParam(defaultValue = "") String key){
         if(bindingResult.hasErrors())return "editPatient";
         pateintRepository.save(patient);
-        return "redirect:/index?page="+page+"&key="+key;
+        return "redirect:/user/index?page="+page+"&key="+key;
     }
 }

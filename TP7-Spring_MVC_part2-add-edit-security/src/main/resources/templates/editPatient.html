@@ -10,7 +10,7 @@
     <div class="card container col-md-6 mt-4">
         <div class="card-header bg-opacity-25 bg-warning text-center"> Modifier le patient</div>
         <div class="card-body">
-                <form method="post" th:action="@{saveEdit(page=${page},key=${key})}" class="form-control" >
+                <form method="post" th:action="@{/admin/saveEdit(page=${page},key=${key})}" class="form-control" >
                     <div>
                         <label>ID:</label>
                         <label th:text="${patient.id}"></label>

@@ -10,7 +10,7 @@
     <div class="card container col-md-6 mt-4">
         <div class="card-header bg-opacity-25 bg-primary text-center"> Ajouter un patient</div>
         <div class="card-body">
-                <form method="post" th:action="@{save}" class="form-control" >
+                <form method="post" th:action="@{/admin/save}" class="form-control" >
                     <div>
                         <label>Nom</label>
                         <input class="form-control" type="text" name="name" th:value="${patient.name}">
