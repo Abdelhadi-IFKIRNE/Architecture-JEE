@@ -44,7 +44,7 @@ public class patientController {
     }
       @GetMapping(path= "/")
     public String def(){
-        return  "redirect:/index";
+        return  "home";
     }
 
     @GetMapping("/form")

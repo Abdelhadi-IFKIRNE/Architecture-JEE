@@ -12,6 +12,7 @@
         <div class="card-body">
                 <form method="post" th:action="@{saveEdit(page=${page},key=${key})}" class="form-control" >
                     <div>
+                        <label>ID:</label>
                         <label th:text="${patient.id}"></label>
                         <input class="form-control visually-hidden" type="text" name="id" th:value="${patient.id}">
                     </div>

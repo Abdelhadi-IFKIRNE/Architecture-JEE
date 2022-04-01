@@ -1,5 +1,6 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/themleaf/layout">
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/themleaf/layout"
+       xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 <head>
     <meta charset="UTF-8">
     <title>Home</title>
@@ -28,14 +29,21 @@
             </div>
         </ul>
 
-        <div class="dropdown">
+        <div class="dropdown" sec:authorize="isAuthenticated()">
             <button type="button" class="btn btn-primary dropdown-toggle" data-bs-toggle="dropdown">
-                [UserName]
+                <span sec:authentication="name"></span>
             </button>
             <ul class="dropdown-menu">
-                <li><a class="dropdown-item" th:href="@{logout}">LogOut</a></li>
+                <li><a class="dropdown-item" th:href="@{/logout}">LogOut</a></li>
             </ul>
         </div>
+
+        <div sec:authorize="!isAuthenticated()">
+
+             <a th:href="@{/login}" class="text-white">Login</a>
+
+        </div>
+
 
     </div>
 </nav>
