@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+  layout:decorate="template1">
+<head>
+    <meta charset="UTF-8">
+    <title>Liste des produits :</title>
+</head>
+<body>
+    <div layout:fragment="content1">
+
+        <div class="card col-md-6 container mt-4">
+            <div class="card-header mt-auto">
+                <h3>Liste des produits disponibles :</h3>
+            </div>
+            <table class="table">
+                <thead>
+                <tr>
+                    <th>ID</th><th>Nom</th><th>Designiation</th><th>Prix</th>
+                </tr>
+                </thead>
+                <tbody>
+                <div class="container">
+                    <form method="get" th:action="@{index}">
+                        <label >Mot Clé :</label>
+                        <input type="text" name="MC" th:value="${motcle}"  class="input-group-text">
+                        <button type="submit" class="btn btn-primary">Chercher</button>
+                    </form>
+                </div>
+                <tr th:each="p:${pageProduits}">
+                    <td th:text="${p.id}"></td>
+                    <td th:text="${p.nom}"></td>
+                    <td th:text="${p.designiation}"></td>
+                    <td th:text="${p.prix}"></td>
+                    <td> <a class="btn btn-danger" th:href="@{delete(id=${p.id}, page=${pageCurrent}, MC=${motcle})}"> Delete</a></td>
+                    <td> <a class="btn btn-success" th:href="@{Edform(id=${p.id})}"> Edit</a></td>
+                </tr>
+
+                </tbody>
+
+            </table>
+
+            <ul  class=" nav nav-pills ">
+                <li th:each="p,status:${pages}" class="mb-3">
+                    <a th:text="${status.index}"
+                       th:class="${status.index==pageCurrent}?'btn btn-primary ms-2':'btn btn-outline-primary ms-2'"
+                       th:href="@{index(page=${status.index}, MC=${motcle})}"></a>
+                </li>
+            </ul>
+
+        </div>
+
+    </div>
+</body>
+</html>

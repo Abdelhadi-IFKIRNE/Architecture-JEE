@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+    layout:decorate="template1">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+      <div layout:fragment="content1">
+          <div class="container form-control col-md-6">
+              <div class="card">
+                  <div class="card-header bg-success bg-opacity-10 text-center text-dark">
+                      Modifier le produit
+                  </div>
+                  <div class="card-body">
+                      <form method="post" th:action="@{/saveEdit}" class="form-control">
+                          <div>
+                              <label>ID : </label>
+                              <label th:text="${produitEdit.id}"></label>
+                              <input type="text" name="id" th:value="${produitEdit.id}" class="form-control visually-hidden">
+                          </div>
+                          <div  >
+                              <label>Nom</label>
+                              <input type="text" name="nom" th:value="${produitEdit.nom}" class="form-control">
+                               <span th:errors="${produitEdit.nom}"></span>
+                          </div>
+                          <div>
+                              <label>Designaition</label>
+                              <input type="text" name="designiation" th:value="${produitEdit.designiation}" class="form-control">
+                              <span th:errors="${produitEdit.designiation}"></span>
+                          </div>
+                          <div >
+                              <label>Prix</label>
+                              <input type="text" name="prix" th:value="${produitEdit.prix}" class="form-control">
+                              <span th:errors="${produitEdit.prix}"></span>
+                          </div>
+                          <div class=" container text-center" >
+                             <button type="submit" class="btn btn-primary mt-4">Modifier</button>
+                          </div>
+                      </form>
+                  </div>
+              </div>
+          </div>
+      </div>
+</body>
+</html>
