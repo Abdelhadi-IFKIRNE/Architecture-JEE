@@ -22,7 +22,7 @@
                 <button type="button" class="btn btn-primary dropdown-toggle" data-bs-toggle="dropdown">
                     Patients
                 </button>
-                <ul class="dropdown-menu" sec:authorize="hasRole('ADMIN')">
+                <ul class="dropdown-menu" sec:authorize="hasAuthority('ADMIN')">
                     <li><a class="dropdown-item" th:href="@{/admin/form}">Nouveau</a></li>
                     <li><a class="dropdown-item" th:href="@{/user/index}">Chercher</a></li>
                 </ul>

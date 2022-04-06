@@ -35,10 +35,10 @@
                         <td th:text="${p.malade}"></td>
                         <td th:text="${p.score}"></td>
                         <td>
-                            <a  class="btn btn-danger" th:href="@{/admin/delete(id=${p.id},page=${currentPage},key=${key})}" sec:authorize="hasRole('ADMIN')">Delete</a>
+                            <a  class="btn btn-danger" th:href="@{/admin/delete(id=${p.id},page=${currentPage},key=${key})}" sec:authorize="hasAuthority('ADMIN')">Delete</a>
                         </td>
                         <td >
-                            <a class="btn btn-success" th:href="@{/admin/edit(id=${p.id},page=${currentPage},key=${key})}" sec:authorize="hasRole('ADMIN')">Modifier</a>
+                            <a class="btn btn-success" th:href="@{/admin/edit(id=${p.id},page=${currentPage},key=${key})}" sec:authorize="hasAuthority('ADMIN')">Modifier</a>
                         </td>
                     </tr>
                     </tbody>
