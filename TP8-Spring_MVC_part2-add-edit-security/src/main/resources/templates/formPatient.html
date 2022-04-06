@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.tymeleaf.org" xmlns:layout="http://wwww.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="template1">
+<head>
+    <meta charset="UTF-8">
+    <title>Patients</title>
+</head>
+<body>
+<div class="container" layout:fragment="content1">
+    <div class="card container col-md-6 mt-4">
+        <div class="card-header bg-opacity-25 bg-primary text-center"> Ajouter un patient</div>
+        <div class="card-body">
+                <form method="post" th:action="@{/admin/save}" class="form-control" >
+                    <div>
+                        <label>Nom</label>
+                        <input class="form-control" type="text" name="name" th:value="${patient.name}">
+                        <span th:errors="${patient.name}" class="text-danger"></span>
+                    </div>
+
+                    <div>
+                        <label>email</label>
+                        <input class="form-control" type="text" name="email" th:value="${patient.email}">
+                        <span th:errors="${patient.email}" class="text-danger"></span>
+                    </div>
+
+                    <div>
+                        <label>Date</label>
+                        <input class="form-control" type="date" name="date" th:value="${patient.date}">
+                        <span th:errors="${patient.date}" class="text-danger"></span>
+                    </div>
+
+                    <div>
+                        <label>malade</label>
+                        <input type="checkbox" name="malade" th:checked="${patient.malade}">
+                    </div>
+                    <div>
+                        <label>score</label>
+                        <input class="form-control" type="text" name="score" th:value="${patient.score}">
+                        <span th:errors="${patient.score}" class="text-danger"></span>
+                    </div>
+                 <div class="text-center mt-4">
+                     <button type="submit" class="btn btn-primary align-content-center">Ajouter</button>
+                 </div>
+
+                </form>
+
+        </div>
+    </div>
+
+</div>
+</body>
+</html>
