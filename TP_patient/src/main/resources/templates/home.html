@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+   layout:decorate="templatedebase">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div class="container form-control" layout:fragment="content1">
+    <div class="container form-control">
+        <form method="get" th:action="@{home}">
+            <label>Chercher</label>
+            <input type="text" class="form-control" name="key" th:value="${key}">
+            <button class="btn btn-primary bg-opacity-50" type="submit">chercher</button>
+        </form>
+    </div>
+    <table class="table mt-4">
+        <thead>
+        <tr>
+            <th>Nom</th><th>Prenom</th><th>Email</th><th>Date de naissance</th><th>Genre</th><th><th>En regle</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="e:${pages}">
+            <td th:text="${e.nom}"></td>
+            <td th:text="${e.prenom}"></td>
+            <td th:text="${e.email}"></td>
+            <td th:text="${e.dateNaissance}"></td>
+            <td th:text="${e.genre}"></td>
+            <td th:text="${e.enRegle}"></td>
+            <td>
+                <a class="btn btn-danger" th:href="@{delete(id=${e.id})}">Delete</a>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+   <div class="form-control">
+       <ul class=" nav nav-pills">
+           <li th:each="page,status:${pages}">
+               <a th:text="${status.index}"
+                  th:class="${status.index==currentPage?'btn btn-primary ms-2':'btn btn-outline-primary ms-2'}"
+               th:href="@{home(page=${status.index},key=${key})}"></a>
+           </li>
+       </ul>
+   </div>
+</div>
+</body>
+</html>
