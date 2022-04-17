@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="template1">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div class="col-md-9 container rounded bg-primary bg-opacity-50" layout:fragment="contentBody">
+    <div  class="container form-control bg-primary bg-opacity-50">
+        <form method="post" th:action="@{/admin/save}">
+            <div class="mb-3 text-center bg-success bg-opacity-50 pb-2">
+                <h2>Ajouter un étudiant</h2>
+            </div>
+            <div class="mb-3">
+                <label class="form-label">Nom</label>
+                <input type="text" class="form-control" aria-describedby="emailHelp"  name="nom" th:value="${etudiantTodefValue.nom}">
+                <span th:errors="${etudiantTodefValue.nom}"></span>
+            </div>
+            <div class="mb-3">
+                <label for="prenom" class="form-label">Prenom</label>
+                <input type="text" class="form-control" id="prenom" aria-describedby="emailHelp" name="prenom" th:value="${etudiantTodefValue.prenom}">
+                <span th:errors="${etudiantTodefValue.prenom}"></span>
+            </div>
+            <div class="mb-3">
+                <label for="Email" class="form-label">Email</label>
+                <input type="email" class="form-control" id="Email" aria-describedby="emailHelp" name="email" th:value="${etudiantTodefValue.email}">
+                <span th:errors="${etudiantTodefValue.email}"></span>
+            </div>
+            <div class="mb-3">
+                <label for="dt" class="form-label">Date de naissance</label>
+                <input type="date" class="form-control" id="dt" aria-describedby="emailHelp" name="dateNiassance" th:value="${etudiantTodefValue.dateNiassance}">
+                <span th:errors="${etudiantTodefValue.dateNiassance}"></span>
+            </div>
+           <div class="mb-3">
+               <select class="form-select" aria-label="Default select example" name="genre" th:value="${etudiantTodefValue.genre}">
+                   <option value="MASCULIN">MASCULIN</option>
+                   <option value="FEMININ">FEMININ</option>
+               </select>
+               <span th:errors="${etudiantTodefValue.genre}"></span>
+           </div>
+            <div class="mb-3 form-check">
+                <label class="form-check-label" for="exampleCheck1" th:checked="${etudiantTodefValue.enRegle}">Est en régle</label>
+                <input type="checkbox" class="form-check-input" id="exampleCheck1" name="enRegle">
+                <span th:errors="${etudiantTodefValue.enRegle}"></span>
+            </div>
+            <div class="text-center">
+                <button type="submit" class="btn btn-primary">Submit</button>
+            </div>
+        </form>
+    </div>
+
+</div>
+</body>
+</html>

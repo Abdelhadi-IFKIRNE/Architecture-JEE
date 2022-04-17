@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en"  xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+    layout:decorate="template1" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+     <div class="col-md-9 container rounded bg-primary bg-opacity-50" layout:fragment="contentBody">
+         <form class="d-flex col-md-4 ms-2 mt-2 mb-2" method="get" th:action="@{/user/home}">
+             <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" name="key" th:value="${key}">
+             <button class="btn btn-primary" type="submit">Search</button>
+         </form>
+         <table class="table table-success table-striped">
+             <thead>
+             <tr>
+                 <th>Id</th><th>Nom</th><th>Prénom</th><th>Email</th><th>Date de Naissance</th><th>Genre</th><th>En régle</th>
+             </tr>
+             </thead>
+             <tbody>
+             <tr th:each="e:${pages}">
+                 <td th:text="${e.id}"></td>
+                 <td th:text="${e.nom}"></td>
+                 <td th:text="${e.prenom}"></td>
+                 <td th:text="${e.email}"></td>
+                 <td th:text="${e.dateNiassance}"></td>
+                 <td th:text="${e.genre}"></td>
+                 <td th:text="${e.enRegle}"></td>
+                 <td>
+                     <a class="btn btn-outline-danger" th:href="@{/admin/delete(id=${e.id},page=${pageCurrent},key=${key})}">Delete</a>
+                 </td>
+                 <td>
+                     <a class="btn btn-outline-success" th:href="@{/admin/edit(id=${e.id},page=${pageCurrent},key=${key})}">Edit</a>
+                 </td>
+             </tr>
+             </tbody>
+
+         </table>
+         <ul class="nav nav-pills mt-2 mb-2 ">
+             <li th:each="int,status:${nbrPages}">
+                 <a th:class="${status.index==pageCurrent?'btn btn-primary ms-2 ':'btn btn-outline-dark ms-2'}" th:text="${status.index}" th:href="@{home(page=${status.index},key=${key})}"></a>
+             </li>
+         </ul>
+     </div>
+</body>
+</html>
