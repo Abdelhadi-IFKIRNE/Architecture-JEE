@@ -20,19 +20,22 @@
             <div class="mb-3">
                 <label for="name" class="form-label">Nom</label>
                 <input type="text" class="form-control" id="name" aria-describedby="emailHelp" name="nom" th:value="${etudiant.nom}">
-
+                <span th:errors="${etudiant.nom}"></span>
             </div>
             <div class="mb-3">
                 <label for="prenom" class="form-label">Prenom</label>
                 <input type="text" class="form-control" id="prenom" aria-describedby="emailHelp" name="prenom" th:value="${etudiant.prenom}">
+                <span th:errors="${etudiant.prenom}"></span>
             </div>
             <div class="mb-3">
                 <label for="Email" class="form-label">Email</label>
                 <input type="email" class="form-control" id="Email" aria-describedby="emailHelp" name="email" th:value="${etudiant.email}">
+                <span th:errors="${etudiant.email}"></span>
             </div>
             <div class="mb-3">
                 <label for="dt" class="form-label">Date de naissance</label>
                 <input type="date" class="form-control" id="dt" aria-describedby="emailHelp" name="dateNiassance" th:value="${etudiant.dateNiassance}">
+                <span th:errors="${etudiant.dateNiassance}"></span>
             </div>
             <select class="form-select" aria-label="Default select example" name="genre" th:value="${etudiant.genre}">
                 <option value="MASCULIN">MASCULIN</option>

@@ -21,12 +21,12 @@ import java.util.Date;
 public class etudiant {
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-//    @NotEmpty
-//    @Size(min = 2,max = 8)
+    @NotEmpty
+    @Size(min = 2,max = 8)
     private String nom;
-//    @Size(min = 2,max = 10)
+    @Size(min = 2,max = 10)
     private String prenom;
-//    @Email
+    @Email
     private String email;
     @Temporal(TemporalType.DATE)
     @DateTimeFormat(pattern = "yyyy-MM-dd")

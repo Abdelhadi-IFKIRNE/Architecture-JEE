@@ -23,8 +23,10 @@ public class config extends WebSecurityConfigurerAdapter {
     protected void configure(HttpSecurity http) throws Exception {
         http.formLogin();
         http.authorizeRequests().antMatchers("/").permitAll();
+        http.authorizeRequests().antMatchers("/webjars/**").permitAll();
         http.authorizeRequests().antMatchers("/admin/**").hasAuthority("ADMIN");
         http.authorizeRequests().antMatchers("/user/**").hasAuthority("USER");
+        http.exceptionHandling().accessDeniedPage("/403");
         http.authorizeRequests().anyRequest().authenticated();
     }
 }

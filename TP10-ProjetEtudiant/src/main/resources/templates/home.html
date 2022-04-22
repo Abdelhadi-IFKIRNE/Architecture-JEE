@@ -27,10 +27,10 @@
                  <td th:text="${e.genre}"></td>
                  <td th:text="${e.enRegle}"></td>
                  <td>
-                     <a class="btn btn-outline-danger" th:href="@{/admin/delete(id=${e.id},page=${pageCurrent},key=${key})}">Delete</a>
+                     <a class="btn btn-outline-danger" th:href="@{/admin/delete(id=${e.id},page=${pageCurrent},key=${key})}" sec:authorize="hasAuthority('ADMIN')">Delete</a>
                  </td>
                  <td>
-                     <a class="btn btn-outline-success" th:href="@{/admin/edit(id=${e.id},page=${pageCurrent},key=${key})}">Edit</a>
+                     <a class="btn btn-outline-success" th:href="@{/admin/edit(id=${e.id},page=${pageCurrent},key=${key})}" sec:authorize="hasAuthority('ADMIN')">Edit</a>
                  </td>
              </tr>
              </tbody>

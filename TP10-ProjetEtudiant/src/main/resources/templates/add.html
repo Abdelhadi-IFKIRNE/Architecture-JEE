@@ -14,35 +14,35 @@
             </div>
             <div class="mb-3">
                 <label class="form-label">Nom</label>
-                <input type="text" class="form-control" aria-describedby="emailHelp"  name="nom" th:value="${etudiantTodefValue.nom}">
-                <span th:errors="${etudiantTodefValue.nom}"></span>
+                <input type="text" class="form-control" aria-describedby="emailHelp"  name="nom" th:value="${etudiant.nom}">
+                <span th:errors="${etudiant.nom}"></span>
             </div>
             <div class="mb-3">
                 <label for="prenom" class="form-label">Prenom</label>
-                <input type="text" class="form-control" id="prenom" aria-describedby="emailHelp" name="prenom" th:value="${etudiantTodefValue.prenom}">
-                <span th:errors="${etudiantTodefValue.prenom}"></span>
+                <input type="text" class="form-control" id="prenom" aria-describedby="emailHelp" name="prenom" th:value="${etudiant.prenom}">
+                <span th:errors="${etudiant.prenom}"></span>
             </div>
             <div class="mb-3">
                 <label for="Email" class="form-label">Email</label>
-                <input type="email" class="form-control" id="Email" aria-describedby="emailHelp" name="email" th:value="${etudiantTodefValue.email}">
-                <span th:errors="${etudiantTodefValue.email}"></span>
+                <input type="email" class="form-control" id="Email" aria-describedby="emailHelp" name="email" th:value="${etudiant.email}">
+                <span th:errors="${etudiant.email}"></span>
             </div>
             <div class="mb-3">
                 <label for="dt" class="form-label">Date de naissance</label>
-                <input type="date" class="form-control" id="dt" aria-describedby="emailHelp" name="dateNiassance" th:value="${etudiantTodefValue.dateNiassance}">
-                <span th:errors="${etudiantTodefValue.dateNiassance}"></span>
+                <input type="date" class="form-control" id="dt" aria-describedby="emailHelp" name="dateNiassance" th:value="${etudiant.dateNiassance}">
+                <span th:errors="${etudiant.dateNiassance}"></span>
             </div>
            <div class="mb-3">
-               <select class="form-select" aria-label="Default select example" name="genre" th:value="${etudiantTodefValue.genre}">
+               <select class="form-select" aria-label="Default select example" name="genre" th:value="${etudiant.genre}">
                    <option value="MASCULIN">MASCULIN</option>
                    <option value="FEMININ">FEMININ</option>
                </select>
-               <span th:errors="${etudiantTodefValue.genre}"></span>
+               <span th:errors="${etudiant.genre}"></span>
            </div>
             <div class="mb-3 form-check">
-                <label class="form-check-label" for="exampleCheck1" th:checked="${etudiantTodefValue.enRegle}">Est en régle</label>
+                <label class="form-check-label" for="exampleCheck1" th:checked="${etudiant.enRegle}">Est en régle</label>
                 <input type="checkbox" class="form-check-input" id="exampleCheck1" name="enRegle">
-                <span th:errors="${etudiantTodefValue.enRegle}"></span>
+                <span th:errors="${etudiant.enRegle}"></span>
             </div>
             <div class="text-center">
                 <button type="submit" class="btn btn-primary">Submit</button>

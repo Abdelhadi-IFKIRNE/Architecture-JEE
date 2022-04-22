@@ -1,6 +1,5 @@
 package com.example.projetetudiant.web;
 
-import com.example.projetetudiant.EnumType.genre;
 import com.example.projetetudiant.entities.etudiant;
 import com.example.projetetudiant.repositories.etudiantRepository;
 import lombok.AllArgsConstructor;
@@ -9,14 +8,10 @@ import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
-import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
 
-import javax.persistence.EnumType;
 import javax.validation.Valid;
-import java.util.Date;
-import java.util.Optional;
 
 @Controller
 @AllArgsConstructor
@@ -44,14 +39,14 @@ public class etudiantController {
 
     @GetMapping("/admin/add")
     public String add(Model model){
-        model.addAttribute("etudiantTodefValue",new etudiant());
+        model.addAttribute("etudiant",new etudiant());
         return "add";
     }
 
     @PostMapping("/admin/save")
-    public String saveEtu(Model model,/*@Valid*/ etudiant etudiantTodefValue, BindingResult bindingResult){
+    public String saveEtu(Model model, @Valid etudiant etudiant, BindingResult bindingResult){
         if (bindingResult.hasErrors())return "add";
-        etudiantRepository.save(etudiantTodefValue);
+        etudiantRepository.save(etudiant);
         return "redirect:/user/home";
     }
 
@@ -65,7 +60,8 @@ public class etudiantController {
     }
 
        @PostMapping("/admin/saveEdit")
-    public String saveEdit(Model model,etudiant etudiant,@RequestParam(name = "page",defaultValue = "0") int page,@RequestParam(name = "key",defaultValue = "") String key){
+    public String saveEdit(Model model, @Valid etudiant etudiant, BindingResult bindingResult, @RequestParam(name = "page",defaultValue = "0") int page, @RequestParam(name = "key",defaultValue = "") String key){
+        if(bindingResult.hasErrors())return "edit";
         etudiantRepository.save(etudiant);
         return "redirect:/user/home?page="+page+"&key="+key;
     }

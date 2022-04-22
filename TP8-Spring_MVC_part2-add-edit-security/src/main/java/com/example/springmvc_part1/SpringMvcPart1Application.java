@@ -36,7 +36,7 @@ public class SpringMvcPart1Application {
     }
 
 
-   @Bean
+ //  @Bean
     CommandLineRunner testMethodes(securityService service){
 
         return args -> {
