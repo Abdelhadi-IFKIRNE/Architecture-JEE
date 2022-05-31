@@ -38,7 +38,7 @@
          </table>
          <ul class="nav nav-pills mt-2 mb-2 ">
              <li th:each="int,status:${nbrPages}">
-                 <a th:class="${status.index==pageCurrent?'btn btn-primary ms-2 ':'btn btn-outline-dark ms-2'}" th:text="${status.index}" th:href="@{home(page=${status.index},key=${key})}"></a>
+                 <a th:class="${status.index==pageCurrent?'btn btn-primary ms-2 ':'btn btn-outlink-dark ms-2'}" th:text="${status.index}" th:href="@{home(page=${status.index},key=${key})}"></a>
              </li>
          </ul>
      </div>
